@@ -76,7 +76,7 @@ public class Civs extends JavaPlugin {
 
     @Override
     public void onDisable() {
-//        BlockLogger.getInstance().saveBlocks();
+        BlockLogger.getInstance().saveBlocks();
         StructureUtil.removeAllBoundingBoxes();
         ConveyorEffect.getInstance().onDisable();
         getLogger().info(LogInfo.DISABLED);
@@ -222,7 +222,7 @@ public class Civs extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new SelectGovTypeMenu(), this);
         Bukkit.getPluginManager().registerEvents(new ActiveEffect(), this);
         Bukkit.getPluginManager().registerEvents(new GovLeaderBoardMenu(), this);
-//        Bukkit.getPluginManager().registerEvents(new AIListener(), this);
+        Bukkit.getPluginManager().registerEvents(new AIListener(), this);
 
         new HousingEffect();
     }
@@ -243,13 +243,13 @@ public class Civs extends JavaPlugin {
         if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
             new PlaceHook().register();
         }
-//        RegisteredServiceProvider<Chat> chatProvider = getServer().getServicesManager().getRegistration(net.milkbowl.vault.chat.Chat.class);
-//        if (chatProvider != null) {
-//            chat = chatProvider.getProvider();
-//            if (chat != null)
-//                System.out.println(Civs.getPrefix() + "Hooked into chat plugin " + chat.getName());
-//        }
-//        return (chat != null);
+        RegisteredServiceProvider<Chat> chatProvider = getServer().getServicesManager().getRegistration(net.milkbowl.vault.chat.Chat.class);
+        if (chatProvider != null) {
+            chat = chatProvider.getProvider();
+            if (chat != null)
+                System.out.println(Civs.getPrefix() + "Hooked into chat plugin " + chat.getName());
+        }
+        return (chat != null);
     }
 
     public static Economy getEcon() {
