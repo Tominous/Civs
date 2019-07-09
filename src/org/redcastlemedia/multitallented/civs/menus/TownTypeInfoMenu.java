@@ -44,7 +44,7 @@ public class TownTypeInfoMenu extends Menu {
             event.getWhoClicked().openInventory(RegionListMenu.createMenu(civilian, townType.getReqs(), 0));
             return;
         }
-        /*if (event.getCurrentItem().getType().equals(Material.CHEST)) {
+        if (event.getCurrentItem().getType().equals(Material.CHEST)) {
             appendHistory(civilian.getUuid(), MENU_NAME + "," + townName);
             event.getWhoClicked().closeInventory();
             event.getWhoClicked().openInventory(RecipeMenu.createMenu(townType.getReagents(), event.getWhoClicked().getUniqueId(), event.getInventory().getItem(0)));
@@ -55,7 +55,7 @@ public class TownTypeInfoMenu extends Menu {
             event.getWhoClicked().closeInventory();
             event.getWhoClicked().openInventory(RecipeMenu.createMenu(townType.getInput(), event.getWhoClicked().getUniqueId(), event.getInventory().getItem(0)));
             return;
-        }*/
+        }
         if (event.getCurrentItem().getType().equals(Material.IRON_PICKAXE)) {
             appendHistory(civilian.getUuid(), MENU_NAME + "," + townTypeName);
             event.getWhoClicked().closeInventory();
