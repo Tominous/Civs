@@ -19,8 +19,8 @@ public class BlockLogger {
     private static BlockLogger blockLogger = null;
     private HashMap<String, CVItem> blocks = new HashMap<>();
 
-//    private long lastSave = 0;
-//    private int intervalId = -1;
+    private long lastSave = 0;
+    private int intervalId = -1;
 
     public BlockLogger() {
         blockLogger = this;
@@ -47,27 +47,27 @@ public class BlockLogger {
         blocks.remove(Region.locationToString(newLocation));
         saveBlocks();
     }
-//    private void shouldSave() {
-//        if (System.currentTimeMillis() - 300000 > lastSave && intervalId == -1) {
-//            intervalId = Bukkit.getScheduler().scheduleSyncDelayedTask(Civs.getInstance(), new Runnable() {
-//                @Override
-//                public void run() {
-//                    saveBlocks();
-//                }
-//            }, 600L);
-//            lastSave = System.currentTimeMillis() + 300000;
-//        } else if (intervalId == -1) {
-//            saveBlocks();
-//            lastSave = System.currentTimeMillis();
-//        }
-//    }
+    private void shouldSave() {
+        if (System.currentTimeMillis() - 300000 > lastSave && intervalId == -1) {
+            intervalId = Bukkit.getScheduler().scheduleSyncDelayedTask(Civs.getInstance(), new Runnable() {
+                @Override
+                public void run() {
+                    saveBlocks();
+                }
+            }, 600L);
+            lastSave = System.currentTimeMillis() + 300000;
+        } else if (intervalId == -1) {
+            saveBlocks();
+            lastSave = System.currentTimeMillis();
+        }
+    }
 
     private void saveBlocks() {
         Civs civs = Civs.getInstance();
         if (civs == null) {
             return;
         }
-//        intervalId = -1;
+        intervalId = -1;
         final File blockData = new File(civs.getDataFolder(), "block-data.yml");
         final HashMap<String, CVItem> finalBlocks = blocks;
         Runnable runMe = new Runnable() {
