@@ -43,8 +43,8 @@ public class PlayerProfileMenu extends Menu {
         OfflinePlayer player = Bukkit.getOfflinePlayer(uuid);
         Civilian cPlayer = CivilianManager.getInstance().getCivilian(player.getUniqueId());
 
-//        clearHistory(civilian.getUuid());
-//        appendHistory(civilian.getUuid(), MENU_NAME + "," + locationString);
+        clearHistory(civilian.getUuid());
+        appendHistory(civilian.getUuid(), MENU_NAME + "," + locationString);
 
         if (event.getCurrentItem().getType().equals(Material.OAK_DOOR)) {
             appendHistory(civilian.getUuid(), MENU_NAME + "," + uuid.toString());
